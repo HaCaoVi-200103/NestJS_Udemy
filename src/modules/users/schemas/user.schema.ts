@@ -4,13 +4,40 @@ import { HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({timestamps:true})
 export class User {
   @Prop()
   name: string;
 
   @Prop()
-  age: number;
+  email: string;
+
+  @Prop()
+password:string;
+
+@Prop()
+phone:string;
+
+@Prop()
+address:string;
+
+@Prop()
+image:string;
+
+@Prop()
+role:string;
+
+@Prop()
+accountTypes:string
+
+@Prop()
+isActive:boolean
+
+@Prop()
+codeId:string;
+
+@Prop()
+codeExpired:Date
 
 }
 

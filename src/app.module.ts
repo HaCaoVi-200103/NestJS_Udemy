@@ -12,16 +12,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       isGlobal:true
     }),
     //Cách kết nối mongodb với server
-MongooseModule.forRootAsync({
-  imports: [ConfigModule],
-  useFactory: async (configService: ConfigService) => ({
-    uri: configService.get<string>('MONGODB_URI'),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+      uri: configService.get<string>('MONGODB_URI'),
   }),
-  inject: [ConfigService],
-}),
+    inject: [ConfigService],
+  }),
     //init user để sữ dụng model
-      UsersModule
-     ],
+    UsersModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
