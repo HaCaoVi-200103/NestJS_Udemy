@@ -33,7 +33,6 @@ export class UsersController {
 
   @Patch()
   update(@Body() updateUserDto: UpdateUserDto) {
-
     return this.usersService.update(updateUserDto);
   }
 
