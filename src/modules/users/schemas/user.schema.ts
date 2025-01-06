@@ -24,13 +24,13 @@ address:string;
 @Prop()
 image:string;
 
-@Prop()
+@Prop({default:"USERS"})
 role:string;
 
-@Prop()
+@Prop({default:"LOCAL"})
 accountTypes:string
 
-@Prop()
+@Prop({default:false})
 isActive:boolean
 
 @Prop()
