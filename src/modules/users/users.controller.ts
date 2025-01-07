@@ -2,8 +2,6 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { UsersService } from '@/modules/users/users.service';
 import { CreateUserDto } from '@/modules/users/dto/create-user.dto';
 import { UpdateUserDto } from '@/modules/users/dto/update-user.dto';
-import { query } from 'express';
-import { IsMongoId } from 'class-validator';
 
 @Controller('users')
 export class UsersController {
@@ -11,8 +9,6 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log(">>>> check createUserDto: ", createUserDto);
-
     return this.usersService.create(createUserDto);
   }
 
