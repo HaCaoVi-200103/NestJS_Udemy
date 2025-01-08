@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { comparePassword } from '@/utils/utils';
 import { JwtService } from '@nestjs/jwt';
@@ -8,7 +8,7 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) { }
 
   async validateUser(username: string, password: string): Promise<any> {
@@ -43,5 +43,17 @@ export class AuthService {
 
   async handleRegister(registerDto: CreateAuthDto) {
     return await this.usersService.register(registerDto)
+  }
+
+  async handleResendEmail(email: string) {
+    try {
+      if (!email) {
+        throw new BadRequestException("Email is required!!!")
+      }
+
+    } catch (error) {
+      console.log(error);
+      return error.response
+    }
   }
 }

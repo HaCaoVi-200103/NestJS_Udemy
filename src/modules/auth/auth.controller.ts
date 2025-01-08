@@ -28,17 +28,9 @@ export class AuthController {
     return this.authService.handleRegister(registerDto)
   }
 
-  @Get("mail")
+  @Get("resend-email")
   @Public()
-  testMail() {
-    this.mailerService
-      .sendMail({
-        to: 'vihcce170371@fpt.edu.vn', // list of receivers
-        // from: 'noreply@nestjs.com', // sender address
-        subject: 'Testing Nest MailerModule ✔', // Subject line
-        text: 'welcome', // plaintext body
-        html: '<b>welcome</b>', // HTML body content
-      })
-    return "ok"
+  resendEmail(@Body() email: string) {
+    return this.authService.handleResendEmail(email)
   }
 }
