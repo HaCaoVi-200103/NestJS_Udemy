@@ -3,6 +3,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './passport/local-auth.guard';
 import { JwtAuthGuard } from './passport/jwt-auth.guard';
+import { Public } from '@/decorator/customize';
 
 @Controller('auth')
 export class AuthController {
@@ -11,11 +12,11 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
   @Post('login')
+  @Public()
   handleLogin(@Request() req) {
     return this.authService.login(req.user)
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get("profile")
   getProfile(@Request() req) {
     return req.user
