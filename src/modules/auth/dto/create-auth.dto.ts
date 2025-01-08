@@ -7,4 +7,7 @@ export class CreateAuthDto {
 
     @IsNotEmpty({ message: "Password not empty!!!" })
     password: string
+
+    @IsNotEmpty({ message: "Name not empty!!!" })
+    name: string
 }
